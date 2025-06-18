@@ -26,18 +26,21 @@ app.use(cors({
 app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({extended:true}))
-// A middleware function is called before the request is processed. It can change the request object. 
 
 app.use("/api/v1/auth", authRoutes)
 app.use("/api/v1/book", bookRoutes)
 app.use("/api/v1/order", orderRoutes)
 app.use("/api/v1/review", reviewRoutes)
 
+app.get("/",(req,res)=>{
+    res.send(`App is running on server ${port}`)
+})
+
 app.listen(port, ()=>{
-    console.log(`App is successfully running on server ${port} !`);  
+    console.log(`App is successfully running on server ${port} !`);
 } )
 
 
-// nodemon vs watch
+
 
 
