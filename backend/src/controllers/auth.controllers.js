@@ -169,6 +169,13 @@ export const profile = async (req, res) => {
         email: true,
         name: true,
         role: true,
+        apiKeys:{
+          select:{
+            id:true,
+            key:true,
+            isActive:true
+          }
+        }
       },
     });
 
