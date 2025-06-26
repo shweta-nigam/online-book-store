@@ -198,7 +198,7 @@ export const logout = async (req, res) => {
 
     return res
       .status(200)
-      .json(new apiResponse(200, null, "user logged successfully."));
+      .json(new apiResponse(200, null, "user logged out successfully."));
   } catch (error) {
     throw new apiError(500, "Error while logging out user.");
   }
@@ -221,7 +221,7 @@ export const forgotPassword = async (req, res) => {
     });
 
     if (!user) {
-      throw new apiError("user not found");
+      throw new apiError(404, "User not found");
     }
 
     // generate token
@@ -230,12 +230,12 @@ export const forgotPassword = async (req, res) => {
 
     //send email
 
-    // sendEmailVerification(user.email, resetToken)
+    await sendEmailVerification(user.email, resetToken)
 
     // update user schema
 
     user = await db.user.update({
-      where: { id: req.user.id },
+      where: { id: req.user },
       data: {
         passwordResetToken: resetToken,
         passwordResetTokenExpiry: tokenExpires,
@@ -246,7 +246,7 @@ export const forgotPassword = async (req, res) => {
 
     return res
       .status(200)
-      .json(new apiResponse(200, email, "verification to set password"));
+      .json(new apiResponse(200, user, "verification to set password"));
   } catch (error) {
     console.error(error);
     throw new apiError(500, "Internal Error while finding password");
@@ -270,7 +270,11 @@ export const resetPassword = async (req, res) => {
   try {
     // find user based on reset token
     let user = await db.user.findFirst({
-      where: { passwordResetToken : token }
+      where: { passwordResetToken : token,
+        passwordResetTokenExpiry:{
+          gt: new Date(),
+        }
+       } 
     });
 
     if (!user) {
@@ -281,12 +285,10 @@ export const resetPassword = async (req, res) => {
 const hashedPassword =  await bcrypt.hash(password,10)
 
     user = await db.user.update({
-      where: { id  : user.id},
+      where: { id : user.id},
       data: {
         password: hashedPassword,
         passwordResetToken: null,  // why null ? ---> This is intentional. You’re not saying, “I forgot to assign this,” but rather, “I am removing it.”
-
-
         passwordResetTokenExpiry:null
       },
       select: {
@@ -333,11 +335,3 @@ export const generateApiKey = async (req,res) => {
   }
 }
 
-
-
-// what does new Date(0)  gives ? interview question
-
-
-// jwt is stateless
-
-// iat and exp in decoded token - > search
