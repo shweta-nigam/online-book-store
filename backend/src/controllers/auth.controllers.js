@@ -59,7 +59,7 @@ export const register = async (req, res) => {
     console.log("new user -> ", newUser);
 
     //email
-    // sendEmailVerification(newUser.email, verificationToken);
+    sendEmailVerification(newUser.email, verificationToken);
 
     res.status(201).json(new apiResponse(201, "User registered successfully"));
   } catch (error) {
