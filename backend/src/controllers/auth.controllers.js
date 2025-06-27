@@ -235,14 +235,18 @@ export const forgotPassword = async (req, res) => {
     // update user schema
 
     user = await db.user.update({
-      where: { id: req.user },
+      where: { id: req.user.id },
       data: {
         passwordResetToken: resetToken,
         passwordResetTokenExpiry: tokenExpires,
       },
+        select: {
+    id: true,
+    email: true,
+    name: true, 
+  },
     });
-
-    console.log(user);
+console.log("Updating user with ID:", req.user?.id);
 
     return res
       .status(200)
