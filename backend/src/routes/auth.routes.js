@@ -8,7 +8,7 @@ authRoutes.get("/verify/:v_Token", verify)
 authRoutes.post("/login", login)
 authRoutes.get("/profile",isLoggedIn, profile)
 authRoutes.get("/logout",isLoggedIn, logout)
-authRoutes.get("/forgot-password",isLoggedIn, forgotPassword)
+authRoutes.post("/forgot-password",isLoggedIn, forgotPassword)
 authRoutes.get("/reset-password/:token",isLoggedIn, resetPassword)
 authRoutes.get("/api-key", isLoggedIn, isAdmin, generateApiKey)
 
