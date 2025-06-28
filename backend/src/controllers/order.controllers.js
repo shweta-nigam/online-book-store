@@ -8,12 +8,12 @@ export const order = async (req, res) => {
   const { bookId, quantity, status } = req.body;
 
   if (!bookId || !quantity || !status) {
-    return next(new apiError(400, "All fields are required "));
+    throw new apiError(400, "All fields are required ");
   }
   try {
     const book = await db.book.findUnique({ where: { id: bookId } });
     if (!book) {
-      return next(new apiError(404, "Book not found"));
+      throw new apiError(404, "Book not found");
     }
 
     const totalPrice = book.price * quantity;
@@ -38,6 +38,7 @@ export const order = async (req, res) => {
             id: true,
             title: true,
             price: true,
+            language: true,
           },
         },
       },
@@ -85,7 +86,7 @@ export const orderDetails = async (req, res) => {
   const userId = req.user.id;
   const { orderId } = req.params;
   if (!orderId) {
-    return next(new apiError(400, "Order id is required"));
+    throw new apiError(400, "Order id is required");
   }
   try {
     const order = await db.order.findFirst({
@@ -105,7 +106,7 @@ export const orderDetails = async (req, res) => {
       },
     });
     if (!order) {
-      return next(new apiError(404, "Order not found"));
+      throw new apiError(404, "Order not found");
     }
 
     res
@@ -119,7 +120,7 @@ export const orderDetails = async (req, res) => {
 
 export const deleteOrder = async (req, res) => {
   const userId = req.user.id;
-  const {orderId} = req.params;
+  const { orderId } = req.params;
   if (!orderId) {
     throw new apiError(400, "order id is required");
   }
@@ -127,7 +128,7 @@ export const deleteOrder = async (req, res) => {
     const existingOrder = await db.order.findFirst({
       where: {
         id: orderId,
-        userId: userId, 
+        userId: userId,
       },
     });
 
@@ -135,13 +136,20 @@ export const deleteOrder = async (req, res) => {
       return new apiError(404, "Order not found or unauthorized");
     }
 
-     const deletedOrder = await db.order.delete({
+    const deletedOrder = await db.order.delete({
       where: { id: orderId },
+      select: {
+        id: true,
+        quantity: true,
+        totalPrice: true,
+        status: true,
+      },
     });
     res
       .status(200)
-      .json(new apiResponse(200, deletedOrder, "Successfully deleted the order."));
-
+      .json(
+        new apiResponse(200, deletedOrder, "Successfully deleted the order.")
+      );
   } catch (error) {
     console.error(error);
     throw new apiError(500, "Internal error while deleting order.");
