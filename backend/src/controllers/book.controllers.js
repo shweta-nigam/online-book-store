@@ -82,7 +82,7 @@ export const allBooks = async (req, res) => {
     });
 
     if (!books) {
-      return next(new apiError(404, "No book found"));
+        throw new apiError(404, "No book found");
     }
 
     return res
@@ -116,7 +116,7 @@ export const bookDetails = async (req, res) => {
     });
 
     if (!book) {
-      return next(new apiError(400, "No details found for this book"));
+        throw new apiError(400, "No details found for this book");
     }
 
     return res
@@ -160,8 +160,9 @@ export const updateBook = async (req, res) => {
     });
 
     if (!book) {
-      return next(new apiError(404, "No book found"));
+       throw new apiError(404, "No book found");
     }
+  
 
     book = await db.book.update({
       where: { id: bookId },
