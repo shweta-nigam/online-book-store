@@ -317,7 +317,7 @@ export const generateApiKey = async (req, res) => {
     }
 
     const apiKey = crypto.randomBytes(32).toString("hex");
-    const hashedKey = crypto.createHash("sha256").update(rawKey).digest("hex");
+    const hashedKey = crypto.createHash("sha256").update(apiKey).digest("hex");
 
     const newApiKey = await db.apiKey.create({
       data: {

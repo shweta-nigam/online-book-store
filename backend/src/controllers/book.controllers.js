@@ -3,11 +3,11 @@ import { apiResponse } from "../utils/apiResponse.js";
 import { db } from "../db/db.js";
 
 export const addBook = async (req, res) => {
-  const  userId  = req.user.id;
+  const userId = req.user.id;
 
   if (!userId) {
-   throw new Error("User ID not found");
-}
+    throw new Error("User ID not found");
+  }
 
   //get data
   const {
@@ -28,7 +28,7 @@ export const addBook = async (req, res) => {
   }
   try {
     //add book
-    const book = await db.book.create({
+    let book = await db.book.create({
       data: {
         title,
         description,
@@ -40,6 +40,18 @@ export const addBook = async (req, res) => {
         genre,
         isbn,
         owner: { connect: { id: userId } },
+      },
+      select: {
+        id: true,
+        title: true,
+        description: true,
+        language: true,
+        author: true,
+        price: true,
+        publishedOn: true,
+        page: true,
+        genre: true,
+        isbn: true,
       },
     });
 
@@ -54,7 +66,20 @@ export const addBook = async (req, res) => {
 
 export const allBooks = async (req, res) => {
   try {
-    const books = await db.book.findMany();
+    const books = await db.book.findMany({
+      select: {
+        id: true,
+        title: true,
+        description: true,
+        language: true,
+        author: true,
+        price: true,
+        publishedOn: true,
+        page: true,
+        genre: true,
+        isbn: true,
+      },
+    });
 
     if (!books) {
       return next(new apiError(404, "No book found"));
@@ -71,22 +96,22 @@ export const allBooks = async (req, res) => {
 
 export const bookDetails = async (req, res) => {
   const { bookId } = req.params;
-  if(!bookId){
-    throw new apiError(400,"Book id is required")
+  if (!bookId) {
+    throw new apiError(400, "Book id is required");
   }
   try {
     const book = await db.book.findFirst({
       where: { id: bookId },
       select: {
-        title:true,
-        description:true,
-        language:true,
-        author:true,
-        price:true,
-        publishedOn:true,
-        page:true,
-        genre:true,
-        isbn:true,
+        title: true,
+        description: true,
+        language: true,
+        author: true,
+        price: true,
+        publishedOn: true,
+        page: true,
+        genre: true,
+        isbn: true,
       },
     });
 
@@ -110,13 +135,13 @@ export const bookDetails = async (req, res) => {
 };
 
 export const updateBook = async (req, res) => {
-  const userId  = req.user.id
+  const userId = req.user.id;
   const { bookId } = req.params;
-    if(!bookId){
-    throw new apiError(400,"Book id is required")
+  if (!bookId) {
+    throw new apiError(400, "Book id is required");
   }
 
-    const {
+  const {
     title,
     description,
     language,
@@ -126,22 +151,21 @@ export const updateBook = async (req, res) => {
     page,
     genre,
     isbn,
-    bookCover
+    bookCover,
   } = req.body;
 
   try {
     let book = await db.book.findFirst({
       where: { id: bookId },
     });
-    
 
     if (!book) {
       return next(new apiError(404, "No book found"));
     }
 
     book = await db.book.update({
-      where:{id :bookId},
-     data: {
+      where: { id: bookId },
+      data: {
         title,
         description,
         language,
@@ -152,8 +176,19 @@ export const updateBook = async (req, res) => {
         genre,
         isbn,
         bookCover,
-        owner :{connect: {id: userId} }
+        owner: { connect: { id: userId } },
       },
+        select: {
+          title: true,
+          description: true,
+          language: true,
+          author: true,
+          price: true,
+          publishedOn: true,
+          page: true,
+          genre: true,
+          isbn: true,
+        },
     });
 
     return res
@@ -167,17 +202,17 @@ export const updateBook = async (req, res) => {
 
 export const deleteBook = async (req, res) => {
   const { bookId } = req.params;
-     if(!bookId){
-    throw new apiError(400,"Book id is required")
+  if (!bookId) {
+    throw new apiError(400, "Book id is required");
   }
 
   try {
     const book = await db.book.delete({
-      where: { id:bookId },
-      select:{
-        title:true,
-        id:true
-      }
+      where: { id: bookId },
+      select: {
+        title: true,
+        id: true,
+      },
     });
 
     return res
