@@ -304,7 +304,7 @@ export const generateApiKey = async (req, res) => {
     const existingApiKey = await db.apiKey.findFirst({
       where: {
         ownerId: userId,
-        isActive,
+        isActive : true,
       },
     });
 
