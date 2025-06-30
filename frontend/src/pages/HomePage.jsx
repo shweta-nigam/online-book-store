@@ -8,18 +8,17 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   return (
-    <div      style={{
-    background: "linear-gradient(90deg, rgba(0,36,31,1) 0%, rgba(5,87,150,1) 35%, rgba(0,0,0,1) 100%)",
-  }}
-     className="w-screen h-screen flex items-center justify-center
- px-4">
+    <div
+     className="w-screen h-screen flex items-center justify-center px-4
+    bg-[linear-gradient(90deg,rgba(0,36,31,0.8)_0%,rgba(5,87,150,0.8)_35%,rgba(0,0,0,0.8)_100%),url('/bg.png')]
+    bg-cover bg-center"
+    >
       <div className="text-center mx-auto">
-        <h1 className="text-4xl font-bold mb-4"> 📚 Welcome to BookBazaar</h1>
+        <h1 className="text-4xl font-bold mb-4"> Welcome to ReadGala</h1>
         {authUser ? (
           <>
             <p className="text-lg mb-6">
-              Hello, <strong>{authUser.name}</strong>! Ready to browse and
-              review books?
+              Hello, <strong>{authUser.name}</strong>! Explore the Galaxy of Books!
             </p>
             <div className="flex justify-center gap-4">
               <Button onClick={() => navigate("/books")}>Browse Books</Button>
@@ -30,7 +29,7 @@ const HomePage = () => {
           </>
         ) : (
           <>
-            <p className="text-lg mb-6"> 
+            <p className="text-lg mb-6">
               Sign up or log in to explore and review books!
             </p>
             <div className="flex justify-center gap-4">

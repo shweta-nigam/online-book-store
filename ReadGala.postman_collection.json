@@ -1,0 +1,541 @@
+{
+	"info": {
+		"_postman_id": "0543818c-3b5c-42e8-a580-5f2ce3fbd78d",
+		"name": "ReadGala",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40908091",
+		"_collection_link": "https://api-team-8764.postman.co/workspace/User-authentication~53608b26-4375-4b65-9018-17e1f0ebba18/collection/40908091-0543818c-3b5c-42e8-a580-5f2ce3fbd78d?action=share&source=collection_link&creator=40908091"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"One\",\r\n    \"password\":\"one111\",\r\n    \"email\": \"one@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{authRoute }}/register",
+							"host": [
+								"{{authRoute }}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{authRoute }}/verify/25c6565930c1a63bccf4874275714a4c57a31b857a3efa379e7bb1f95dc5023f",
+							"host": [
+								"{{authRoute }}"
+							],
+							"path": [
+								"verify",
+								"25c6565930c1a63bccf4874275714a4c57a31b857a3efa379e7bb1f95dc5023f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\":\"parry123\",\r\n    \"email\": \"parry@gmail1.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{authRoute }}/login",
+							"host": [
+								"{{authRoute }}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{authRoute }}/profile",
+							"host": [
+								"{{authRoute }}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{authRoute }}/logout",
+							"host": [
+								"{{authRoute }}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgot password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"one@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{authRoute }}/forgot-password",
+							"host": [
+								"{{authRoute }}"
+							],
+							"path": [
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset password",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\":\"one1111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{authRoute }}/reset-password/bc6a2a8e27c7509d9e62a7f3cd00a446c4530e871a336baf02ab7342674487cf",
+							"host": [
+								"{{authRoute }}"
+							],
+							"path": [
+								"reset-password",
+								"bc6a2a8e27c7509d9e62a7f3cd00a446c4530e871a336baf02ab7342674487cf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api key",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{authRoute }}/api-key",
+							"host": [
+								"{{authRoute }}"
+							],
+							"path": [
+								"api-key"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Book",
+			"item": [
+				{
+					"name": "add book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"The Pragmatic Programmer\",\r\n  \"description\": \"A classic book on software engineering and best practices.\",\r\n  \"language\": \"English\",\r\n  \"author\": \"Andrew Hunt, David Thomas\",\r\n  \"price\": 39.99,\r\n  \"publishedOn\": \"1999-10-30T00:00:00.000Z\",\r\n  \"page\": 352,\r\n  \"genre\": \"Programming\",\r\n  \"isbn\": \"978-0201616224\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/book/add-book",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"book",
+								"add-book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all books",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"One\",\r\n    \"description\" : \"des\",\r\n    \"language\":\"eng\",\r\n    \"author\": \"lilly\",\r\n    \"price\": \"67690\",\r\n   \" publishedOn\":\" 12-02-2003\",\r\n    \"page\":67,\r\n    \"genre\": \"comedy\",\r\n    \"isbn\" : \"gh\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/book/all-books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"book",
+								"all-books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "book details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/book/get-book-details/01JXB3JQ3G3YBKZ62XFZNTD54E",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"book",
+								"get-book-details",
+								"01JXB3JQ3G3YBKZ62XFZNTD54E"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"The pragmatic programmer\",\r\n  \"description\": \"A classic book on software engineering and best practices.\",\r\n  \"language\": \"english\",\r\n  \"author\": \"Andrew Hunt, David Thomas\",\r\n  \"price\": 39.99,\r\n  \"publishedOn\": \"1999-10-30T00:00:00.000Z\",\r\n  \"page\": 35200,\r\n  \"genre\": \"programming\",\r\n  \"isbn\": \"978-0201616224\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/book/update-book/9e5ef390-2481-4d24-a96d-fa65dbcbe0a3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"book",
+								"update-book",
+								"9e5ef390-2481-4d24-a96d-fa65dbcbe0a3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/book/delete-book/01JXCQ5VTKQ9XGGYJG9YCNQ6ZN",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"book",
+								"delete-book",
+								"01JXCQ5VTKQ9XGGYJG9YCNQ6ZN"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "place order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookId\":  \"a87efa5a-396b-4281-bf23-bb2def8ae872\",\r\n    \"quantity\":3 ,\r\n     \"status\" : \"PENDING\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/order/place-order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"place-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list order",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"One\",\r\n    \"description\" : \"des\",\r\n    \"language\":\"eng\",\r\n    \"author\": \"lilly\",\r\n    \"price\": \"67690\",\r\n   \" publishedOn\":\" 12-02-2003\",\r\n    \"page\":67,\r\n    \"genre\": \"comedy\",\r\n    \"isbn\" : \"gh\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/order/get-order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"get-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "order details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/order/order-details/f7e1a8a1-f0aa-4b4f-a87a-20cae09656b0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"order-details",
+								"f7e1a8a1-f0aa-4b4f-a87a-20cae09656b0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"One\",\r\n    \"description\" : \"des\",\r\n    \"language\":\"eng\",\r\n    \"author\": \"lilly\",\r\n    \"price\": \"67690\",\r\n   \" publishedOn\":\" 12-02-2003\",\r\n    \"page\":67,\r\n    \"genre\": \"comedy\",\r\n    \"isbn\" : \"gh\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/order/delete/07bdf5cb-c13e-487b-a323-7e337fcb66b0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"delete",
+								"07bdf5cb-c13e-487b-a323-7e337fcb66b0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "review",
+			"item": [
+				{
+					"name": "add review",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"demo3\",\r\n    \"message\": \"this is a demo review 3\",\r\n    \"rating\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/review/add-review/4bfca2d9-ea57-4a4e-8071-a6ed2de11076",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"review",
+								"add-review",
+								"4bfca2d9-ea57-4a4e-8071-a6ed2de11076"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list review",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/review/a87efa5a-396b-4281-bf23-bb2def8ae872/reviews",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"review",
+								"a87efa5a-396b-4281-bf23-bb2def8ae872",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete review",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/review/delete-review/c69ac5c1-02dd-4f4c-9e0a-0ee3656c83d0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"review",
+								"delete-review",
+								"c69ac5c1-02dd-4f4c-9e0a-0ee3656c83d0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "authRoute ",
+			"value": "http://localhost:5000/api/v1/auth/",
+			"type": "default"
+		}
+	]
+}
