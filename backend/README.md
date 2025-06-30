@@ -53,7 +53,7 @@ Server runs on: http://localhost:5000
 ## Postman Collection
 To test the API easily, import our Postman collection:
 
- ReadGala.postman_collection.json
+ReadGala.postman_collection.json
 
 In Postman:
 
