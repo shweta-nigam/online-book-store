@@ -1,0 +1,585 @@
+{
+	"info": {
+		"_postman_id": "ed5169c6-7322-4d17-9578-8d3726d08c0e",
+		"name": "ReadGala - Book Store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40908091",
+		"_collection_link": "https://api-team-8764.postman.co/workspace/User-authentication~53608b26-4375-4b65-9018-17e1f0ebba18/collection/40908091-ed5169c6-7322-4d17-9578-8d3726d08c0e?action=share&source=collection_link&creator=40908091"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Parry\",\r\n    \"password\":\"parry123\",\r\n    \"email\": \"parry@gmail1.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://online-book-store-gb78.onrender.com/api/v1/auth/register",
+							"protocol": "https",
+							"host": [
+								"online-book-store-gb78",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://online-book-store-gb78.onrender.com/api/v1/auth/verify/9254184007eeb2f22776610cfaed7d17063b42c0c875e8b15e6862e1fb50f37b",
+							"protocol": "https",
+							"host": [
+								"online-book-store-gb78",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"verify",
+								"9254184007eeb2f22776610cfaed7d17063b42c0c875e8b15e6862e1fb50f37b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\":\"parry123\",\r\n    \"email\": \"parry@gmail1.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://online-book-store-gb78.onrender.com/api/v1/auth/login",
+							"protocol": "https",
+							"host": [
+								"online-book-store-gb78",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://online-book-store-gb78.onrender.com/api/v1/auth/profile",
+							"protocol": "https",
+							"host": [
+								"online-book-store-gb78",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"lilly\",\r\n    \"password\":\"lilly123\",\r\n    \"email\": \"lilly@gmail1.com\"\r\n}"
+						},
+						"url": {
+							"raw": "https://online-book-store-gb78.onrender.com/api/v1/auth/logout",
+							"protocol": "https",
+							"host": [
+								"online-book-store-gb78",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgot password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\":\"parry123\",\r\n    \"email\": \"parry@gmail1.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://online-book-store-gb78.onrender.com/api/v1/auth/forgot-password",
+							"protocol": "https",
+							"host": [
+								"online-book-store-gb78",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset password",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\":\"parry111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://online-book-store-gb78.onrender.com/api/v1/auth/reset-password/d1c71d0f32a3205faca7d940a9fade74b071a14ec383eaee7ebc1d572b081cd7",
+							"protocol": "https",
+							"host": [
+								"online-book-store-gb78",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"reset-password",
+								"d1c71d0f32a3205faca7d940a9fade74b071a14ec383eaee7ebc1d572b081cd7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api key",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://online-book-store-gb78.onrender.com/api/v1/auth/api-key",
+							"protocol": "https",
+							"host": [
+								"online-book-store-gb78",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"api-key"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Book",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"The Pragmatic Programmer\",\r\n  \"description\": \"A classic book on software engineering and best practices.\",\r\n  \"language\": \"Franch\",\r\n  \"author\": \"Andrew Hunt, David Thomas\",\r\n  \"price\": 39.99,\r\n  \"publishedOn\": \"1999-10-30T00:00:00.000Z\",\r\n  \"page\": 352,\r\n  \"genre\": \"Programming\",\r\n  \"isbn\": \"978-0201616224\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://online-book-store-gb78.onrender.com/api/v1/book/add-book",
+							"protocol": "https",
+							"host": [
+								"online-book-store-gb78",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"book",
+								"add-book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://online-book-store-gb78.onrender.com/api/v1/book/all-books",
+							"protocol": "https",
+							"host": [
+								"online-book-store-gb78",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"book",
+								"all-books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "book details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://online-book-store-gb78.onrender.com/api/v1/book/get-book-details/afaf4644-c240-41f6-9aa3-41c6995cdffd",
+							"protocol": "https",
+							"host": [
+								"online-book-store-gb78",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"book",
+								"get-book-details",
+								"afaf4644-c240-41f6-9aa3-41c6995cdffd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update book",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"The pragmatic programmer\",\r\n  \"description\": \"A classic book on software engineering and best practices.\",\r\n  \"language\": \"english\",\r\n  \"author\": \"Andrew Hunt, David Thomas\",\r\n  \"price\": 39.99,\r\n  \"publishedOn\": \"1999-10-30T00:00:00.000Z\",\r\n  \"page\": 352000,\r\n  \"genre\": \"programming\",\r\n  \"isbn\": \"978-0201616224\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://online-book-store-gb78.onrender.com/api/v1/book/update-book/afaf4644-c240-41f6-9aa3-41c6995cdffd",
+							"protocol": "https",
+							"host": [
+								"online-book-store-gb78",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"book",
+								"update-book",
+								"afaf4644-c240-41f6-9aa3-41c6995cdffd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete book",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"The pragmatic programmer\",\r\n  \"description\": \"A classic book on software engineering and best practices.\",\r\n  \"language\": \"english\",\r\n  \"author\": \"Andrew Hunt, David Thomas\",\r\n  \"price\": 39.99,\r\n  \"publishedOn\": \"1999-10-30T00:00:00.000Z\",\r\n  \"page\": 35200000000000,\r\n  \"genre\": \"programming\",\r\n  \"isbn\": \"978-0201616224\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/book/delete-book/afaf4644-c240-41f6-9aa3-41c6995cdffd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"book",
+								"delete-book",
+								"afaf4644-c240-41f6-9aa3-41c6995cdffd"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "place order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookId\": \"a87efa5a-396b-4281-bf23-bb2def8ae872\",\r\n    \"quantity\": 5,\r\n    \"status\": \"PENDING\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://online-book-store-gb78.onrender.com/api/v1/order/place-order",
+							"protocol": "https",
+							"host": [
+								"online-book-store-gb78",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"place-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://online-book-store-gb78.onrender.com/api/v1/order/get-order",
+							"protocol": "https",
+							"host": [
+								"online-book-store-gb78",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"get-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "order details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://online-book-store-gb78.onrender.com/api/v1/order/order-details/fa09c022-22a9-4b48-8018-2f78445e1cec",
+							"protocol": "https",
+							"host": [
+								"online-book-store-gb78",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"order-details",
+								"fa09c022-22a9-4b48-8018-2f78445e1cec"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/order/delete/fa09c022-22a9-4b48-8018-2f78445e1cec",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"delete",
+								"fa09c022-22a9-4b48-8018-2f78445e1cec"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Review",
+			"item": [
+				{
+					"name": "add review",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"demo review\",\r\n    \"message\": \"this is a demo review\",\r\n    \"rating\": 3.9\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://online-book-store-gb78.onrender.com/api/v1/review/add-review/a87efa5a-396b-4281-bf23-bb2def8ae872",
+							"protocol": "https",
+							"host": [
+								"online-book-store-gb78",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"review",
+								"add-review",
+								"a87efa5a-396b-4281-bf23-bb2def8ae872"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list review",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://online-book-store-gb78.onrender.com/api/v1/review/a87efa5a-396b-4281-bf23-bb2def8ae872/reviews",
+							"protocol": "https",
+							"host": [
+								"online-book-store-gb78",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"review",
+								"a87efa5a-396b-4281-bf23-bb2def8ae872",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete review",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://online-book-store-gb78.onrender.com/api/v1/review/delete-review/091bea8e-a740-486e-84f3-cfdac300a636",
+							"protocol": "https",
+							"host": [
+								"online-book-store-gb78",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"review",
+								"delete-review",
+								"091bea8e-a740-486e-84f3-cfdac300a636"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
