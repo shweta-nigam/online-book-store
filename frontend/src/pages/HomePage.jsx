@@ -1,5 +1,11 @@
 import { useAuthStore } from "../store/useAuthStore";
 import { Button } from "@/components/ui/button";
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuLink,
+} from "@/components/ui/navigation-menu";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
@@ -8,41 +14,86 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   return (
+    <>
     <div
-     className="w-screen h-screen flex items-center justify-center px-4
-    bg-[linear-gradient(90deg,rgba(0,36,31,0.8)_0%,rgba(5,87,150,0.8)_35%,rgba(0,0,0,0.8)_100%),url('/bg.png')]
-    bg-cover bg-center"
+      className="
+    bg-[linear-gradient(90deg,rgba(0,0,0,0.95)_0%,rgba(5,87,150,0.8)_35%,rgba(0,0,0,0.85)_100%),url('/bg.png')]
+    bg-cover bg-center w-screen h-auto"
     >
-      <div className="text-center mx-auto">
-        <h1 className="text-4xl font-bold mb-4"> Welcome to ReadGala</h1>
-        {authUser ? (
-          <>
-            <p className="text-lg mb-6">
-              Hello, <strong>{authUser.name}</strong>! Explore the Galaxy of Books!
-            </p>
-            <div className="flex justify-center gap-4">
-              <Button onClick={() => navigate("/books")}>Browse Books</Button>
-              <Button variant="outline" onClick={logout}>
-                Logout
+        <header className="w-full px-6 py-4 flex items-center justify-between mt-[-22px]">
+        <img src="/logo.png" alt="MyApp Logo" className="h-25 w-auto" />
+
+        <div className="flex items-center gap-6">
+          <nav className="hidden md:block">
+            <NavigationMenu>
+              <NavigationMenuList>
+                {["Home", "About", "Contact", "Books"].map((item) => (
+                  <NavigationMenuItem key={item}>
+                    <NavigationMenuLink asChild>
+                      <a
+                        href={`/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`}
+                        className="px-3 py-2 text-white text-2xl font-medium hover:text-blue-400 transition-colors"
+                      >
+                        {item}
+                      </a>
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
+          </nav>
+
+          {!authUser ? (
+            <>
+              <Button variant="outline" className="text-white bg-black" onClick={() => navigate("/login")}>
+                Login
               </Button>
-            </div>
-          </>
-        ) : (
-          <>
-            <p className="text-lg mb-6">
-              Sign up or log in to explore and review books!
-            </p>
-            <div className="flex justify-center gap-4">
-              <Button onClick={() => navigate("/login")}>Login </Button>
-              <Button variant="outline" onClick={() => navigate("/signup")}>
-                Sign Up
-              </Button>
-            </div>
-          </>
-        )}
+              <Button variant="outline" className="text-white bg-black" onClick={() => navigate("/signup")}>Sign Up</Button>
+            </>
+          ) : (
+            <Button variant="outline"  className="text-white bg-black" onClick={logout}>
+              Logout
+            </Button>
+          )}
+        </div>
+      </header>
+
+{/* Hero section */}
+      <div className="w-screen h-screen flex items-center justify-center px-4">
+        <div className="text-center mx-auto mb-20">
+          <h1 className="text-white text-5xl md:text-6xl font-bold mb-4">
+            Welcome to ReadGala
+          </h1>
+          <p className="text-white text-lg md:text-xl mb-6 max-w-2xl">
+            Dive into a universe of stories — discover, explore, and review your
+            favorite books with fellow readers.
+          </p>
+          <Button
+            size="lg"
+            variant="outline"
+            className="text-lg px-6 py-4 text-white bg-gray-900 hover:bg-gradient-to-r hover:from-blue-100 hover:to-blue-300"
+            onClick={() => navigate("/books")}
+          >
+            Browse Books
+          </Button>
+        </div>
       </div>
+
     </div>
+    
+ {/* Featured books */}
+
+</>
   );
 };
+
+// - Hero Section
+// - Featured Books
+// - Browse by Category
+// - Author Spotlights
+// - What Readers Are Saying
+// - Limited-Time Deals
+// - Join the Community
+// - Footer
 
 export default HomePage;

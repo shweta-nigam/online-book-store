@@ -1,32 +1,18 @@
-import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink } from "@/components/ui/navigation-menu";
 
 export default function Navbar() {
-  const location = useLocation();
-  const isHome = location.pathname === "/";
 
   return (
-    <header
-      style={
-        isHome
-          ? {
-              background: "linear-gradient(90deg, rgba(0,36,31,1) 0%, rgba(5,87,150,1) 35%, rgba(0,0,0,1) 100%)"
-            }
-          : {}
-      }
-      className={`flex items-center justify-between px-6 py-4 shadow ${
-        isHome ? "bg-transparent" : "bg-white"
-      }`}
-    >
+  <header className="  w-full px-4 py-4 flex items-center justify-between   bg-[linear-gradient(90deg,rgba(0,36,31,1)_0%,rgba(5,87,150,1)_35%,rgba(0,0,0,1)_100%)]">
+
       <img src="/logo.png" alt="MyApp Logo" className="h-32 w-auto" />
 
-      {/* Desktop nav */}
       <nav className="hidden md:block">
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuLink href="/" className="px-4 py-2">
+              <NavigationMenuLink href="/" className="px-4 py-2 text-gray-500 text-xl">
                 Home
               </NavigationMenuLink>
             </NavigationMenuItem>
