@@ -8,27 +8,24 @@ export default function Navbar() {
 
       <img src="/logo.png" alt="MyApp Logo" className="h-32 w-auto" />
 
-      <nav className="hidden md:block">
-        <NavigationMenu>
-          <NavigationMenuList>
-            <NavigationMenuItem>
-              <NavigationMenuLink href="/" className="px-4 py-2 text-gray-500 text-xl">
-                Home
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink href="/about" className="px-4 py-2">
-                About
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink href="/contact" className="px-4 py-2">
-                Contact
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-      </nav>
+       <nav className="hidden md:block">
+                 <NavigationMenu>
+                   <NavigationMenuList>
+                     {["Home", "About", "Contact", "Books"].map((item) => (
+                       <NavigationMenuItem key={item}>
+                         <NavigationMenuLink asChild>
+                           <a
+                             href={`/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`}
+                             className="px-3 py-2 text-white text-2xl font-medium hover:text-blue-400 transition-colors"
+                           >
+                             {item}
+                           </a>
+                         </NavigationMenuLink>
+                       </NavigationMenuItem>
+                     ))}
+                   </NavigationMenuList>
+                 </NavigationMenu>
+               </nav>
 
       <Button asChild>
         <a href="/signup">Sign Up</a>

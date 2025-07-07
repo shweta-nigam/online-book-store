@@ -7,6 +7,10 @@ import {
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 import { useNavigate } from "react-router-dom";
+import { FeaturedBooks } from "@/components/FeaturedBooks";
+import AuthorSpotlights from "@/components/AuthorSpotlights";
+import Testimonials from "@/components/Testimonials";
+import LimitedTimeDeals from "@/components/LimitedTimeDeals";
 
 const HomePage = () => {
   const authUser = useAuthStore((state) => state.authUser);
@@ -80,8 +84,13 @@ const HomePage = () => {
       </div>
 
     </div>
-    
- {/* Featured books */}
+
+
+<FeaturedBooks />
+{/* <CategoryPreview /> */}
+<AuthorSpotlights />
+<Testimonials />
+<LimitedTimeDeals />
 
 </>
   );
