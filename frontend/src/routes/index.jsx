@@ -7,6 +7,7 @@ import BookPage from "../pages/BookPage";
 import ReviewPage from "../pages/ReviewPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import Navbar from "@/components/Navbar";
+import VerifyPage from "@/pages/VerifyPage";
 
 export const AppRoutes = () => {
   const location = useLocation();
@@ -21,6 +22,7 @@ export const AppRoutes = () => {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/books" element={<BookPage />} />
         <Route path="/book/:bookId/reviews" element={<ReviewPage />} />
+        <Route path="/verify" element={<VerifyPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
