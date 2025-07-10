@@ -68,7 +68,7 @@ export default function LimitedTimeDeals() {
   };
 
   return (
-    <section className="py-12 bg-[linear-gradient(90deg,rgba(0,0,0,0.95)_0%,rgba(5,87,150,0.8)_35%,rgba(0,0,0,0.95)_100%)]">
+    <section className="py-12 bg-[linear-gradient(90deg,rgba(0,0,0)_0%,rgba(5,87,150)_35%,rgba(0,0,0)_100%)]">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-center gap-3 mb-8">
           <Badge className="bg-red-600 text-white text-xs px-2 py-1">

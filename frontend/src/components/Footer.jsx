@@ -11,7 +11,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-[linear-gradient(90deg,rgba(0,0,0)_0%,rgba(5,87,150)_35%,rgba(0,0,0)_100%)] text-gray-100 mt-16">
+    <footer className="bg-[linear-gradient(90deg,rgba(0,0,0)_0%,rgba(5,87,150)_35%,rgba(0,0,0)_100%)] text-gray-100">
       <div className="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8 animate-fadeIn">
         {/* Brand / About */}
         <div>

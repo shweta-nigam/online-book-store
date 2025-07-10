@@ -1,6 +1,5 @@
 import nodemailer from "nodemailer";
 
-// Create a transporter object
 const transporter = nodemailer.createTransport({
   host: process.env.MAIL_HOST,
   port: process.env.MAIL_PORT,
@@ -10,19 +9,22 @@ const transporter = nodemailer.createTransport({
     pass: process.env.MAIL_PASS,
   },
 });
-// Configure the mailOptions object
+
 export const sendEmailVerification = async (toEmail, verificationToken) => {
   const mailOptions = {
     from: process.env.MAIL_SENDER,
-    to:toEmail,
+    to: toEmail,
     subject: "User verification",
     text: `For verification of your account click the link below ${process.env.BASE_URL}/api/v1/auth/verify/${verificationToken} `,
-    html: "<b>Verify your account</b>",
+    html: `<div>
+    <p>For verification of your account, click the link below:</p>
+    <a href="${process.env.BASE_URL}/api/v1/auth/verify/${verificationToken}">Verify Account</a>
+  </div>`,
   };
 
   try {
-    const info =  transporter.sendMail(mailOptions)
-      console.log("Email sent: " + info.response);
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Email sent: " + info.response);
   } catch (error) {
     console.log("Error: ", error);
   }

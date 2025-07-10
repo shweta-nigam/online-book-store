@@ -11,6 +11,7 @@ import { FeaturedBooks } from "@/components/FeaturedBooks";
 import AuthorSpotlights from "@/components/AuthorSpotlights";
 import Testimonials from "@/components/Testimonials";
 import LimitedTimeDeals from "@/components/LimitedTimeDeals";
+import JoinCommunity from "@/components/JoinCommunity";
 
 const HomePage = () => {
   const authUser = useAuthStore((state) => state.authUser);
@@ -49,13 +50,13 @@ const HomePage = () => {
 
           {!authUser ? (
             <>
-              <Button variant="outline" className="text-white bg-black" onClick={() => navigate("/login")}>
+              <Button variant="outline" className="text-white bg-black border-white  hover:text-black hover:bg-white hover:border-black transition-colors duration-300" onClick={() => navigate("/login")}>
                 Login
               </Button>
-              <Button variant="outline" className="text-white bg-black" onClick={() => navigate("/signup")}>Sign Up</Button>
+              <Button variant="outline" className="text-white bg-black border-white  hover:text-black hover:bg-white hover:border-black transition-colors duration-300" onClick={() => navigate("/signup")}>Sign Up</Button>
             </>
           ) : (
-            <Button variant="outline"  className="text-white bg-black" onClick={logout}>
+            <Button variant="outline"  className="text-white bg-black border-white  hover:text-black hover:bg-white hover:border-black transition-colors duration-300" onClick={logout}>
               Logout
             </Button>
           )}
@@ -91,6 +92,7 @@ const HomePage = () => {
 <AuthorSpotlights />
 <Testimonials />
 <LimitedTimeDeals />
+<JoinCommunity />
 
 </>
   );
