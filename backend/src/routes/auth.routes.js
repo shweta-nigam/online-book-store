@@ -4,7 +4,7 @@ import { isAdmin, isLoggedIn } from "../middlewares/auth.middleware.js"
 const authRoutes = express.Router()
 
 authRoutes.post("/register",register)
-authRoutes.get("/verify/:v_Token", verify)
+authRoutes.get("/verify", verify)
 authRoutes.post("/login", login)
 authRoutes.get("/profile",isLoggedIn, profile)
 authRoutes.get("/logout",isLoggedIn, logout)

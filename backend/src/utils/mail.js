@@ -15,10 +15,10 @@ export const sendEmailVerification = async (toEmail, verificationToken) => {
     from: process.env.MAIL_SENDER,
     to: toEmail,
     subject: "User verification",
-    text: `For verification of your account click the link below ${process.env.BASE_URL}/api/v1/auth/verify/${verificationToken} `,
+    text: `For verification of your account click the link below ${process.env.BASE_URL}/api/v1/auth/verify?token=${verificationToken} `,
     html: `<div>
     <p>For verification of your account, click the link below:</p>
-    <a href="${process.env.BASE_URL}/api/v1/auth/verify/${verificationToken}">Verify Account</a>
+    <a href="${process.env.BASE_URL}/api/v1/auth/verify?token=${verificationToken}">Verify Account</a>
   </div>`,
   };
 

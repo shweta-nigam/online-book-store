@@ -66,17 +66,17 @@ export const register = async (req, res) => {
 };
 
 export const verify = async (req, res) => {
-  const { v_Token } = req.params;
-  console.log("v-token", v_Token);
+  const { token } = req.query;
+  console.log("token", token);
 
-  if (!v_Token) {
+  if (token) {
     throw new apiError(400, "Token not found", error);
   }
 
   try {
     const user = await db.user.findFirst({
       where: {
-        verificationToken: v_Token,
+        verificationToken: token,
       },
     });
     console.log("user -----", user);
