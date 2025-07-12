@@ -69,7 +69,7 @@ export const verify = async (req, res) => {
   const { token } = req.query;
   console.log("token", token);
 
-  if (token) {
+  if (!token) {
     throw new apiError(400, "Token not found", error);
   }
 
