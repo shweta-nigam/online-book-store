@@ -134,7 +134,7 @@ export const login = async (req, res) => {
 
     const cookieOptions = {
       httpOnly: true,
-      sameSite: "strict",
+      sameSite: "None",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7d
       secure: process.env.NODE_ENV !== "development",
     };
