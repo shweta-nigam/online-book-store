@@ -22,7 +22,7 @@ export const useOrderStore = create((set)=>({
      } catch (error) {
         console.error("Error in placing order", error);
         
-        toast.error(err.response?.data?.message || "failed to place order")
+        toast.error(error.response?.data?.message || "failed to place order")
      }finally{
         set({isLoading:false});
      }
@@ -36,7 +36,7 @@ export const useOrderStore = create((set)=>({
         } catch (error) {
           console.error("Error in fetching order", error);
         
-        toast.error(err.response?.data?.message || "failed to fetch order")  
+        toast.error(error.response?.data?.message || "failed to fetch order")  
         } finally{
              set({isLoading:false})
         }
@@ -50,7 +50,7 @@ export const useOrderStore = create((set)=>({
       } catch (error) {
        console.error("Failed to get order details", error);
         
-        toast.error(err.response?.data?.message || "Failed to get order details")  
+        toast.error(error.response?.data?.message || "Failed to get order details")  
         } finally{
              set({isLoading:false})
         }
@@ -68,7 +68,7 @@ export const useOrderStore = create((set)=>({
       } catch (error) {
        console.error("Failed to delete order", error);
         
-        toast.error(err.response?.data?.message || "Failed to To delete order")  
+        toast.error(error.response?.data?.message || "Failed to To delete order")  
         } finally{
              set({isLoading:false})
         }
