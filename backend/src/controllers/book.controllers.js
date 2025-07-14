@@ -35,7 +35,7 @@ export const addBook = async (req, res) => {
       page,
       genre,
       isbn,
-    } = req.body;
+    } = body;
 
     // validate data
     if (
