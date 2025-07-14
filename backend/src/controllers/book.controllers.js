@@ -10,20 +10,15 @@ export const addBook = async (req, res) => {
   }
 
   //get data
-  const {
-    title,
-    description,
-    language,
-    author,
-    price,
-    publishedOn,
-    page,
-    genre,
-    isbn,
-  } = req.body;
+const {
+  title, description, language, author, price, publishedOn, page, genre, isbn
+} = req.body;
+
+// Compute bookCover automatically:
+const bookCover = `https://covers.openlibrary.org/b/isbn/${isbn.replace(/-/g, '')}-L.jpg`;
 
   // validate data
-  if (!title || !language || !price || !genre) {
+  if (!title || !language || !price || !genre || !isbn || !author ||!publishedOn ) {
     throw new apiError(400, "All fields are required");
   }
   try {
@@ -39,6 +34,7 @@ export const addBook = async (req, res) => {
         page,
         genre,
         isbn,
+        bookCover,
         owner: { connect: { id: userId } },
       },
       select: {
@@ -52,6 +48,7 @@ export const addBook = async (req, res) => {
         page: true,
         genre: true,
         isbn: true,
+        bookCover:true,
       },
     });
 
@@ -78,6 +75,7 @@ export const allBooks = async (req, res) => {
         page: true,
         genre: true,
         isbn: true,
+        bookCover: true, 
       },
     });
 
@@ -112,6 +110,7 @@ export const bookDetails = async (req, res) => {
         page: true,
         genre: true,
         isbn: true,
+        bookCover: true, 
       },
     });
 
@@ -151,8 +150,9 @@ export const updateBook = async (req, res) => {
     page,
     genre,
     isbn,
-    bookCover,
   } = req.body;
+
+  const bookCover = `https://covers.openlibrary.org/b/isbn/${isbn.replace(/-/g, '')}-L.jpg`;
 
   try {
     let book = await db.book.findFirst({
@@ -189,6 +189,7 @@ export const updateBook = async (req, res) => {
           page: true,
           genre: true,
           isbn: true,
+          bookCover: true, 
         },
     });
 

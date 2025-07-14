@@ -26,7 +26,7 @@ const HomePage = () => {
     bg-cover bg-center w-screen h-auto"
     >
         <header className="w-full px-6 py-4 flex items-center justify-between mt-[-22px]">
-        <img src="/logo.png" alt="MyApp Logo" className="h-25 w-auto" />
+        <img src="/logo.png" alt="MyApp Logo" className="h-26 max-w-[200px] w-auto" />
 
         <div className="flex items-center gap-6">
           <nav className="hidden md:block">
@@ -98,13 +98,5 @@ const HomePage = () => {
   );
 };
 
-// - Hero Section
-// - Featured Books
-// - Browse by Category
-// - Author Spotlights
-// - What Readers Are Saying
-// - Limited-Time Deals
-// - Join the Community
-// - Footer
 
 export default HomePage;

@@ -31,7 +31,7 @@ export default function VerifyPage() {
   const isLoading = status.startsWith("Verifying");
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-900 text-gray-100">
+    <div className="flex items-center justify-center w-screen h-screen bg-gray-900 text-gray-100">
       <div className="p-6 bg-gray-800 rounded shadow-lg flex flex-col items-center">
         {isLoading && (
           <Loader2 className="animate-spin w-10 h-10 mb-4 text-indigo-400" />

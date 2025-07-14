@@ -9,8 +9,9 @@ export default function Navbar() {
   const logout = useAuthStore((state) => state.logout);
 
   return (
-    <header className="w-full px-4 flex items-center justify-between bg-[linear-gradient(90deg,rgba(0,0,0)_0%,rgba(5,87,150)_35%,rgba(0,0,0)_100%)]">
-      <img src="/logo.png" alt="MyApp Logo" className="h-26 w-auto" />
+    <header className="w-full flex items-center justify-between bg-[linear-gradient(90deg,rgba(0,0,0)_0%,rgba(5,87,150)_35%,rgba(0,0,0)_100%)]">
+       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
+      <img src="/logo.png" alt="MyApp Logo" className="h-26 max-w-[200px] w-auto" />
 
       <nav className="hidden md:block">
         <NavigationMenu>
@@ -58,6 +59,7 @@ export default function Navbar() {
             Logout
           </Button>
         )}
+      </div>
       </div>
     </header>
   );

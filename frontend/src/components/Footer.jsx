@@ -1,4 +1,4 @@
-import { InstagramIcon, GithubIcon, XIcon } from "lucide-react"; // or wherever your icons are
+import { InstagramIcon, GithubIcon, XIcon } from "lucide-react";
 import { useState } from "react";
 
 export default function Footer() {
@@ -6,14 +6,13 @@ export default function Footer() {
 
   function handleSubscribe(e) {
     e.preventDefault();
-    // Your subscribe logic here
     console.log("Subscribed:", email);
   }
 
   return (
     <footer className="bg-[linear-gradient(90deg,rgba(0,0,0)_0%,rgba(5,87,150)_35%,rgba(0,0,0)_100%)] text-gray-100">
       <div className="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8 animate-fadeIn">
-        {/* Brand / About */}
+      
         <div>
           <h3 className="text-3xl font-bold mb-3">ReadGala</h3>
           <p className="text-sm text-gray-300">
@@ -21,7 +20,6 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Quick Links */}
         <div>
           <h4 className="text-lg font-semibold mb-3">Quick Links</h4>
           <ul className="space-y-2 text-sm">
@@ -42,7 +40,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Newsletter */}
+      
         <div className="md:col-span-2">
           <h4 className="text-lg font-semibold mb-3">Join Our Newsletter</h4>
           <p className="text-sm text-gray-300 mb-4">
@@ -67,10 +65,9 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Social + Bottom Bar */}
       <div className="border-t border-gray-700 py-6">
         <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-          {/* Social Icons with animation */}
+      
           <div className="flex space-x-5">
             {[InstagramIcon, GithubIcon, XIcon].map((Icon, idx) => (
               <Icon
@@ -80,7 +77,6 @@ export default function Footer() {
             ))}
           </div>
 
-          {/* Copyright */}
           <div className="text-sm text-gray-400">
             © {new Date().getFullYear()} ReadGala. All rights reserved.
           </div>

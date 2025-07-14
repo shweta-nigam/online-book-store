@@ -12,6 +12,12 @@ const BookPage = () => {
   const { fetchBookDetails, deleteBook, selectBook, isLoading, error } =
     useBookStore();
 
+  useEffect(() => {
+    if (bookId) {
+      fetchBookDetails(bookId);
+    }
+  }, [bookId, fetchBookDetails]);
+
   const handleDelete = async () => {
     await deleteBook(bookId);
     navigate("/books");
