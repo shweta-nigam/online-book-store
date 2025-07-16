@@ -9,6 +9,7 @@ import NotFoundPage from "../pages/NotFoundPage";
 import Navbar from "@/components/Navbar";
 import VerifyPage from "@/pages/VerifyPage";
 import BooksList from "@/pages/BooksList";
+import ProfilePage from "@/pages/ProfilePage";
 
 export const AppRoutes = () => {
   const location = useLocation();
@@ -24,6 +25,7 @@ export const AppRoutes = () => {
         <Route path="/books" element={<BooksList />} />
         <Route path="/book/:bookId/reviews" element={<ReviewPage />} />
         <Route path="/verify" element={<VerifyPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
