@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useReviewStore } from "../store/useReviewStore";
+import { useReviewStore } from "../../store/useReviewStore";
 import { useParams } from "react-router-dom";
 import { Loader } from "@/components/ui/loader";
 import { Button } from "@/components/ui/button";

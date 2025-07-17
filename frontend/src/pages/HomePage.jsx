@@ -56,7 +56,7 @@ const HomePage = () => {
               </NavigationMenu>
             </nav>
 
-            {!authUser ? (
+            {/* {!authUser ? (
               <>
                 <Button
                   variant="outline"
@@ -81,7 +81,14 @@ const HomePage = () => {
               >
                 Profile
               </Button>
-            )}
+            )} */}
+            <Button
+                variant="outline"
+                className="text-white bg-black border-white hover:text-black hover:bg-white hover:border-black transition-colors duration-300 rounded-3xl"
+                onClick={() => navigate("/profile")}
+              >
+                Profile
+              </Button>
           </div>
         </header>
 

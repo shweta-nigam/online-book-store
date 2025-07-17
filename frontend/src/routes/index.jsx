@@ -1,15 +1,17 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 
 import HomePage from "../pages/HomePage";
-import LoginPage from "../pages/LoginPage";
-import SignupPage from "@/pages/SignUpPage";
-import BookPage from "../pages/BookPage";
-import ReviewPage from "../pages/ReviewPage";
+import BookRoutes from "./bookRoutes";
 import NotFoundPage from "../pages/NotFoundPage";
+
+
+import ReviewPage from "../pages/Profile/ReviewPage";
 import Navbar from "@/components/Navbar";
-import VerifyPage from "@/pages/VerifyPage";
-import BooksList from "@/pages/BooksList";
-import ProfilePage from "@/pages/ProfilePage";
+import VerifyPage from "@/pages/Auth/VerifyPage";
+import ProfilePage from "@/pages/Profile/ProfilePage";
+import OrderPage from "@/pages/Profile/OrderPage";
+
+
 
 export const AppRoutes = () => {
   const location = useLocation();
@@ -20,13 +22,17 @@ export const AppRoutes = () => {
       {!isHome && <Navbar />}
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/books" element={<BooksList />} />
+        {BookRoutes}
+        
+        {/* <Route path="/books" element={<BooksList />} /> */}
         <Route path="/book/:bookId/reviews" element={<ReviewPage />} />
         <Route path="/verify" element={<VerifyPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
         <Route path="*" element={<NotFoundPage />} />
+
+        <Route path="/profile" element={<ProfilePage />}>
+          <Route path="orders" element={< OrderPage />} />
+
+        </Route>
       </Routes>
     </>
   );
