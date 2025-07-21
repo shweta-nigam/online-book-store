@@ -10,6 +10,7 @@ import Navbar from "@/components/Navbar";
 import VerifyPage from "@/pages/Auth/VerifyPage";
 import ProfilePage from "@/pages/Profile/ProfilePage";
 import OrderPage from "@/pages/Profile/OrderPage";
+import OrderRoutes from "./orderRoutes";
 
 
 
@@ -23,8 +24,9 @@ export const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         {BookRoutes}
-        
-        {/* <Route path="/books" element={<BooksList />} /> */}
+        {OrderRoutes} 
+
+
         <Route path="/book/:bookId/reviews" element={<ReviewPage />} />
         <Route path="/verify" element={<VerifyPage />} />
         <Route path="*" element={<NotFoundPage />} />

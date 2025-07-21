@@ -9,24 +9,26 @@ export const useOrderStore = create((set)=>({
     isLoading: false,
     
     
-    placeOrder: async({bookId, quantity, status})=>{
-     set({isLoading:true})
-     try {
-        const res = await axiosInstance.post("/order/place-order" , {
-            bookId,
-            quantity,
-            status
-        })
-        toast.success("Order placed successfully!")
-        set({currentOrder: res.config.data.data, isLoading:false})
-     } catch (error) {
-        console.error("Error in placing order", error);
-        
-        toast.error(error.response?.data?.message || "failed to place order")
-     }finally{
-        set({isLoading:false});
-     }
-    },
+   placeOrder: async ({ bookId, quantity, status }) => {
+  set({ isLoading: true });
+  try {
+    const res = await axiosInstance.post("/order/place-order", {
+      bookId,
+      quantity,
+      status,
+    });
+    
+    set({ currentOrder: res.data.data, isLoading: false });
+
+    toast.success("Order placed successfully!");
+  } catch (error) {
+    console.error("Error in placing order", error);
+    toast.error(error.response?.data?.message || "Failed to place order");
+  } finally {
+    set({ isLoading: false });
+  }
+},
+
 
     fetchUserOrder:async()=>{
         set({isLoading:true})

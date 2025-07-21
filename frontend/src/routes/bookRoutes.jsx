@@ -8,9 +8,6 @@ const BookRoutes = (
   <>
     <Route path="/books" element={<BooksList />} />
     <Route path="/book/:bookId" element={<BookPage />} />
-    {/* <Route path="/book/:bookId/edit" element={<EditBook />} /> */}
-    {/* <Route path="/book/:bookId/reviews" element={<BookReviews />} /> */}
-    <Route path="/book/:bookId/order" element={<OrderPage />} />
   </>
 );
 
