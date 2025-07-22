@@ -7,8 +7,7 @@ export const useOrderStore = create((set)=>({
     orders:[],
     currentOrder:null,
     isLoading: false,
-    
-    
+
    placeOrder: async ({ bookId, quantity, status }) => {
   set({ isLoading: true });
   try {
@@ -30,21 +29,27 @@ export const useOrderStore = create((set)=>({
 },
 
 
-    fetchUserOrder:async()=>{
-        set({isLoading:true})
-        try {
-            const res = await axiosInstance.get("/order/get-order")
-            set({currentOrder: res.data.data, isLoading:false})
-        } catch (error) {
-          console.error("Error in fetching order", error);
-        
-        toast.error(error.response?.data?.message || "failed to fetch order")  
-        } finally{
-             set({isLoading:false})
-        }
-    },
+fetchUserOrder: async () => {
+  set({ isLoading: true });
+  try {
+    const res = await axiosInstance.get("/order/get-order");
 
-    getOderDetails: async(orderId)=>{
+    const data = res.data?.data;
+
+    set({
+      orders: Array.isArray(data) ? data : [], 
+      isLoading: false,
+    });
+  } catch (error) {
+    console.error("Error in fetching order", error);
+    toast.error(error.response?.data?.message || "Failed to fetch orders");
+    set({ orders: [], isLoading: false }); 
+  }
+},
+
+
+
+    getOrderDetails: async (orderId) => {
       set({isLoading:true})
       try {
         const res = await axiosInstance.get(`/order/order-details/${orderId}`)

@@ -10,7 +10,7 @@ const PlaceOrder = () => {
   const { placeOrder, isLoading } = useOrderStore();
 
   const [quantity, setQuantity] = useState(1);
-  const [status, setStatus] = useState("pending");
+  const [status, setStatus] = useState("PENDING");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,9 +23,8 @@ const PlaceOrder = () => {
     try {
       await placeOrder({ bookId, quantity, status });
       toast.success("Order placed successfully!");
-    //   navigate("/orders");
-    navigate("/profile/orders");
-
+      //   navigate("/orders");
+      navigate("/profile/orders");
     } catch (error) {
       console.error("Order placement failed:", error);
       toast.error("Something went wrong. Please try again.");
@@ -65,9 +64,9 @@ const PlaceOrder = () => {
             onChange={(e) => setStatus(e.target.value)}
             className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
-            <option value="pending">Pending</option>
-            <option value="confirmed">Confirmed</option>
-            <option value="shipped">Shipped</option>
+            <option value="PENDING">Pending</option>
+            <option value="CONFIRMED">Confirmed</option>
+            <option value="SHIPPED">Shipped</option>
           </select>
         </div>
 

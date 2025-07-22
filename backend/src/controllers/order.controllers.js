@@ -9,7 +9,18 @@ export const order = async (req, res) => {
 
   if (!bookId || !quantity || !status) {
     throw new apiError(400, "All fields are required ");
-  }
+  } 
+
+  if (!bookId || typeof bookId !== "string" || bookId.trim() === "") {
+  throw new apiError(400, "Valid book ID is required");
+}
+
+const validStatuses = ["PENDING", "CONFIRMED", "SHIPPED", "CANCELLED"];
+if (!validStatuses.includes(status)) {
+  throw new apiError(400, "Invalid order status");
+}
+
+
   try {
     const book = await db.book.findUnique({ where: { id: bookId } });
     if (!book) {
@@ -56,7 +67,7 @@ export const order = async (req, res) => {
 export const listOrder = async (req, res) => {
   const userId = req.user.id;
   try {
-    const order = await db.order.findFirst({
+    const order = await db.order.findMany({
       where: { userId: userId },
       select: {
         id: true,
