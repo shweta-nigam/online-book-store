@@ -115,7 +115,6 @@ const HomePage = () => {
       </div>
 
       <FeaturedBooks />
-      {/* <CategoryPreview /> */}
       <AuthorSpotlights />
       <Testimonials />
       <LimitedTimeDeals />

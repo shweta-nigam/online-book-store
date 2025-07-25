@@ -9,7 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const ReviewPage = () => {
   const { bookId } = useParams();
-  const { listReviews, addReviews, deleteReview, reviews, isLoading } = useReviewStore();
+ const { listReviews, addReview, deleteReview, reviews, isLoading } = useReviewStore();
 
   const [form, setForm] = useState({
     title: "",
@@ -23,15 +23,20 @@ const ReviewPage = () => {
     }
   }, [bookId]);
 
-  const handleInputChange = (e) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
+ const handleInputChange = (e) => {
+  const { name, value } = e.target;
+  setForm((prev) => ({
+    ...prev,
+    [name]: name === "rating" ? Number(value) : value,
+  }));
+};
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
      console.log("Submit clicked", form); 
     if (!form.title || !form.message || !form.rating) return;
-    await addReviews({ bookId, ...form });
+    await addReview({ bookId, ...form });
     setForm({ title: "", message: "", rating: "" });
   };
 

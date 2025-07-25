@@ -4,103 +4,68 @@ import { db } from "../db/db.js";
 
 export const addBook = async (req, res) => {
   const userId = req.user.id;
-
   if (!userId) {
     throw new Error("User ID not found");
   }
 
-  //get data
-  // const {
-  //   title, description, language, author, price, publishedOn, page, genre, isbn
-  // } = req.body;
-
   let booksData = req.body;
-
-  // // Compute bookCover automatically:
-  // const bookCover = `https://covers.openlibrary.org/b/isbn/${isbn.replace(/-/g, '')}-L.jpg`;
-
-  // support array or single object
   if (!Array.isArray(booksData)) {
     booksData = [booksData];
   }
 
-  const preparedBooks = booksData.map((book) => {
-    const {
-      title,
-      description,
-      language,
-      author,
-      price,
-      publishedOn,
-      page,
-      genre,
-      isbn,
-    } = book;
-
-    // validate data
-    if (
-      !title ||
-      !language ||
-      !price ||
-      !genre ||
-      !isbn ||
-      !author ||
-      !publishedOn
-    ) {
-      throw new apiError(400, "All fields are required");
-    }
-
-    return {
-      title,
-      description,
-      language,
-      author,
-      price,
-      publishedOn: new Date(publishedOn),
-      page,
-      genre,
-      isbn,
-      bookCover: `https://covers.openlibrary.org/b/isbn/${isbn.replace(
-        /-/g,
-        ""
-      )}-L.jpg`,
-      owner: { connect: { id: userId } },
-    };
-  });
-
   try {
-    //add book
-    // let book = await db.book.create({
-    //   data: {
-    //     title,
-    //     description,
-    //     language,
-    //     author,
-    //     price,
-    //     publishedOn,
-    //     page,
-    //     genre,
-    //     isbn,
-    //     bookCover,
-    //     owner: { connect: { id: userId } },
-    //   },
-    //   select: {
-    //     id: true,
-    //     title: true,
-    //     description: true,
-    //     language: true,
-    //     author: true,
-    //     price: true,
-    //     publishedOn: true,
-    //     page: true,
-    //     genre: true,
-    //     isbn: true,
-    //     bookCover:true,
-    //   },
-    // });
+    const preparedBooks = booksData.map((book) => {
+      const {
+        title,
+        description,
+        language,
+        author,
+        price,
+        publishedOn,
+        page,
+        genre,
+        isbn,
+      } = book;
 
-    let createdBooks = [];
+      // Validate required fields
+      if (
+        !title ||
+        !language ||
+        !price ||
+        !genre ||
+        !isbn ||
+        !author ||
+        !publishedOn
+      ) {
+        throw new apiError(400, `Missing required fields in book: ${title}`);
+      }
 
+      const parsedDate = new Date(publishedOn);
+      if (isNaN(parsedDate.getTime())) {
+        throw new apiError(400, `Invalid publishedOn date in book: ${title}`);
+      }
+
+      return {
+        title,
+        description: description || "",
+        language,
+        author,
+        price,
+        publishedOn: parsedDate,
+        page: page || null,
+        genre,
+        isbn,
+        bookCover: `https://covers.openlibrary.org/b/isbn/${isbn.replace(
+          /-/g,
+          ""
+        )}-L.jpg`,
+        owner: {
+          connect: { id: userId },
+        },
+      };
+    });
+
+    const createdBooks = [];
     for (const data of preparedBooks) {
       const book = await db.book.create({
         data,
@@ -118,13 +83,14 @@ export const addBook = async (req, res) => {
           bookCover: true,
         },
       });
-      createdBooks.push(book)
+      createdBooks.push(book);
     }
-    return res
-      .status(200)
-      .json(new apiResponse(200, createdBooks, "Book(s) added successfully."));
+
+    return res.status(200).json(
+      new apiResponse(200, createdBooks, "Book(s) added successfully.")
+    );
   } catch (error) {
-    console.error(error);
+    console.error("Book Add Error:", error);
     throw new apiError(500, "Something went wrong while adding the book(s)");
   }
 };
