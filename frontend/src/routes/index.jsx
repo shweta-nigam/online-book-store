@@ -12,6 +12,7 @@ import OrderRoutes from "./orderRoutes";
 import AuthRoute from "./authRoutes";
 import ProfileRoute from "./ProfileRoutes";
 import AboutPage from "@/pages/AboutPage";
+import ContactPage from "@/pages/ContactPage";
 
 
 
@@ -25,6 +26,7 @@ export const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         {BookRoutes}
         {OrderRoutes} 
         {AuthRoute}

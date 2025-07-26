@@ -82,13 +82,6 @@ const HomePage = () => {
                 Profile
               </Button>
             )}
-            {/* <Button
-                variant="outline"
-                className="text-white bg-black border-white hover:text-black hover:bg-white hover:border-black transition-colors duration-300 rounded-3xl"
-                onClick={() => navigate("/profile")}
-              >
-                Profile
-              </Button> */}
           </div>
         </header>
 
@@ -104,7 +97,7 @@ const HomePage = () => {
             <Button
               size="lg"
               variant="outline"
-              className="text-lg px-6 py-4 text-white bg-gray-900 hover:bg-gradient-to-r hover:from-blue-100 hover:to-blue-300"
+              className="btn"
               onClick={() => navigate("/books")}
             >
               Browse Books
