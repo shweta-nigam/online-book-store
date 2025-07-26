@@ -14,6 +14,7 @@ const limitedDeals = [
     newPrice: "₹749",
     genre: "Memoir",
     endsInSeconds: 3600,
+    dealUrl: "/book/c32d16ae-3589-41cc-ae49-9c2c5cd344c1",
   },
   {
     id: 2,
@@ -24,6 +25,7 @@ const limitedDeals = [
     newPrice: "₹599",
     genre: "Self Help",
     endsInSeconds: 7200,
+    dealUrl: "/book/207566cd-55ed-4155-aa76-a55d9619b6e7",
   },
   {
     id: 3,
@@ -34,6 +36,7 @@ const limitedDeals = [
     newPrice: "₹899",
     genre: "Fiction",
     endsInSeconds: 5400,
+    dealUrl: "/book/b44a56b5-2989-4f97-baa9-be6aeb4d5ff7",
   },
   {
     id: 4,
@@ -44,6 +47,7 @@ const limitedDeals = [
     newPrice: "₹749",
     genre: "Productivity",
     endsInSeconds: 4800,
+    dealUrl: "/book/297c7edf-624f-4511-b2ce-f3af37f27a83",
   },
 ];
 
@@ -80,9 +84,8 @@ export default function LimitedTimeDeals() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {limitedDeals.map((book, idx) => (
-            <motion.a
+            <motion.div
               key={book.id}
-              href={`/books/${book.id}`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -120,18 +123,26 @@ export default function LimitedTimeDeals() {
                 </CardContent>
 
                 <CardFooter className="p-4 pt-0">
-                  <Button
-                    size="sm"
-                    className="w-full bg-gray-900 hover:bg-gray-600 text-white rounded-md text-xs tracking-wide"
+                  <a
+                    href={book.dealUrl}
+                    className="w-full"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    View Deal
-                  </Button>
+                    <Button
+                      size="sm"
+                      className="w-full bg-gray-900 hover:bg-gray-600 text-white rounded-md text-xs tracking-wide"
+                    >
+                      View Deal
+                    </Button>
+                  </a>
                 </CardFooter>
               </Card>
-            </motion.a>
+            </motion.div>
           ))}
         </div>
       </div>
     </section>
   );
 }
+

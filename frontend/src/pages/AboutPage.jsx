@@ -119,7 +119,7 @@ const AboutPage = () => {
         </div>
       </div>
 
-      {/* Timeline */}
+   
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-10 text-[#00d9ff]">Our Journey</h2>
         <div className="relative border-l-2 border-[#00d9ff] pl-6 space-y-12">
@@ -132,8 +132,8 @@ const AboutPage = () => {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="absolute left-[-13px] top-1 w-5 h-5 bg-[#00d9ff] rounded-full shadow-lg shadow-cyan-500/50 border-2 border-white"></div>
-              <h3 className="font-semibold text-lg">{event.year} — {event.title}</h3>
+              <div className="absolute left-[-13px] top-1 w-5 h-5 bg-[#00d9ff] rounded-full shadow-lg shadow-cyan-500/50 border-2 border-white "></div>
+              <h3 className="font-semibold text-lg m-4">{event.year} — {event.title}</h3>
               <p className="text-gray-300 text-sm">{event.description}</p>
             </motion.div>
           ))}

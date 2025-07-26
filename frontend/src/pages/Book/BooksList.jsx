@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useBookStore } from "../../store/useBookStore";
 import { Loader } from "@/components/ui/loader";
 import { Card, CardContent } from "@/components/ui/card";
-import BookFrame from "@/components/BooksPage/BookFrame";
 import BookCarousel from "@/components/BooksPage/BookCarousel";
 
 const BooksList = () => {
