@@ -28,9 +28,9 @@ const BooksList = () => {
     return (
       <div className="flex flex-col items-center justify-center py-12 w-full min-h-screen text-white bg-[linear-gradient(90deg,rgba(0,0,0)_0%,rgba(5,87,150)_35%,rgba(0,0,0)_100%)]">
         <img
-          src="https://undraw.co/api/illustrations/4f6cbf45-8d1e-4779-9c69-cb1b6f2d5c3a"
+          src="/e-shelf.jpg"
           alt="No books illustration"
-          className="w-64 h-64 object-contain mb-4"
+          className="w-124 object-contain mb-4"
         />
         <h2 className="text-xl font-semibold mb-2">No books found!</h2>
         <p className="text-gray-300 mb-4 text-center max-w-xs">
@@ -67,10 +67,7 @@ const BooksList = () => {
                   <h2 className="text-sm font-semibold line-clamp-2 text-white">{book.title}</h2>
                   <p className="text-xs text-gray-300">{book.author}</p>
                   <p className="text-indigo-400 font-semibold text-sm">
-                    ${Number(book.price ?? 0).toFixed(2)}
-                    <span className="text-gray-400 ml-1">
-                      / ₹{Math.round(Number(book.price ?? 0) * 83)}
-                    </span>
+                    ₹{Number(book.price ?? 0).toFixed(2)}
                   </p>
                 </div>
               </CardContent>

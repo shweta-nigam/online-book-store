@@ -7,11 +7,11 @@ import {
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 import { useNavigate } from "react-router-dom";
-import { FeaturedBooks } from "@/components/FeaturedBooks";
-import AuthorSpotlights from "@/components/AuthorSpotlights";
-import Testimonials from "@/components/Testimonials";
-import LimitedTimeDeals from "@/components/LimitedTimeDeals";
-import JoinCommunity from "@/components/JoinCommunity";
+import { FeaturedBooks } from "@/components/HomePage/FeaturedBooks";
+import AuthorSpotlights from "@/components/HomePage/AuthorSpotlights";
+import Testimonials from "@/components/HomePage/Testimonials";
+import LimitedTimeDeals from "@/components/HomePage/LimitedTimeDeals";
+import JoinCommunity from "@/components/HomePage/JoinCommunity";
 
 const HomePage = () => {
   const authUser = useAuthStore((state) => state.authUser);
@@ -23,7 +23,7 @@ const HomePage = () => {
       <div
         className="
     bg-[linear-gradient(90deg,rgba(0,0,0,0.95)_0%,rgba(5,87,150,0.8)_35%,rgba(0,0,0,0.85)_100%),url('/bg.png')]
-    bg-cover bg-center w-screen h-auto"
+    bg-cover bg-center w-full h-auto"
       >
         <header className="w-full px-6 py-4 flex items-center justify-between mt-[-22px]">
           <img
@@ -92,8 +92,7 @@ const HomePage = () => {
           </div>
         </header>
 
-        {/* Hero section */}
-        <div className="w-screen h-screen flex items-center justify-center px-4">
+        <div className="w-full h-screen flex items-center justify-center px-4">
           <div className="text-center mx-auto mb-20">
             <h1 className="text-white text-5xl md:text-6xl font-bold mb-4">
               Welcome to ReadGala

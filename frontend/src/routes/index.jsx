@@ -11,6 +11,7 @@ import ReviewPage from "../pages/Profile/ReviewPage";
 import OrderRoutes from "./orderRoutes";
 import AuthRoute from "./authRoutes";
 import ProfileRoute from "./ProfileRoutes";
+import AboutPage from "@/pages/AboutPage";
 
 
 
@@ -23,6 +24,7 @@ export const AppRoutes = () => {
       {!isHome && <Navbar />}
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
         {BookRoutes}
         {OrderRoutes} 
         {AuthRoute}
@@ -32,8 +34,8 @@ export const AppRoutes = () => {
 
         <Route path="/book/:bookId/reviews" element={<ReviewPage />} />
       
-        <Route path="*" element={<NotFoundPage />} />
-
+       
+       <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );
