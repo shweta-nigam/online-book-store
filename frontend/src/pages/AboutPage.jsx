@@ -97,26 +97,27 @@ const AboutPage = () => {
         <p className="text-gray-300 max-w-xl mx-auto">
           The passionate squad behind ReadGala — combining code, creativity, and community to shape the future of reading.
         </p>
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 justify-center">
-          {teamMembers.map((member, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="flex flex-col items-center bg-black/30 p-4 rounded-xl border border-white/10 shadow-md"
-            >
-              <img
-                src={member.image}
-                alt={member.name}
-                className="w-20 h-20 rounded-full object-cover mb-3 border-2 border-[#00d9ff]"
-              />
-              <p className="text-lg font-semibold">{member.name}</p>
-              <p className="text-sm text-gray-400">{member.role}</p>
-            </motion.div>
-          ))}
-        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-center">
+  {teamMembers.map((member, i) => (
+    <motion.div
+      key={i}
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.4, delay: i * 0.1 }}
+      viewport={{ once: true }}
+      className="flex flex-col items-center bg-black/30 p-4 rounded-xl border border-white/10 shadow-md"
+    >
+      <img
+        src={member.image}
+        alt={member.name}
+        className="w-20 h-20 rounded-full object-cover mb-3 border-2 border-[#00d9ff]"
+      />
+      <p className="text-lg font-semibold">{member.name}</p>
+      <p className="text-sm text-gray-400">{member.role}</p>
+    </motion.div>
+  ))}
+</div>
+
       </div>
 
    

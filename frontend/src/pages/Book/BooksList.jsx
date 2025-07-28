@@ -42,7 +42,6 @@ const BooksList = () => {
   return (
     <div className="min-h-screen w-full text-white bg-[linear-gradient(90deg,rgba(0,0,0)_0%,rgba(5,87,150)_35%,rgba(0,0,0)_100%)] p-4">
         
-    {/* <BookFrame /> */}
     <BookCarousel />
 
 

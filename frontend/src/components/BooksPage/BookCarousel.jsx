@@ -5,46 +5,71 @@ const offers = [
   {
     title: "Summer Sale",
     description: "Get up to 50% off on selected titles.",
-    background: "/f1.webp",
+    background: "/bg/f1.webp",
     book: {
       link: "https://example.com/book1",
-      zigzag: ["/b21.webp", "/b22.webp", "/b3.png", "/b4.jpg"],
+      zigzag: [
+        "/books/b21.webp",
+        "/books/b22.webp",
+        "/books/b25.jpg",
+        "/books/b4.jpg",
+      ],
     },
   },
   {
     title: "Buy 2 Get 1",
     description: "Bundle deal on bestsellers.",
-    background: "/f2.webp",
+    background: "/bg/f2.webp",
     book: {
       link: "https://example.com/book2",
-      zigzag: ["/b5.jpg", "/b6.jpg", "/b7.jpg", "/b8.jpg"],
+      zigzag: [
+        "/books/b5.jpg",
+        "/books/b6.jpg",
+        "/books/b7.jpg",
+        "/books/b8.jpg",
+      ],
     },
   },
   {
     title: "New Arrivals",
     description: "Fresh releases now available.",
-    background: "/f9.png",
+    background: "/bg/f9.png",
     book: {
       link: "https://example.com/book3",
-      zigzag: ["/b9.webp", "/b10.jpg", "/b11.jpg", "/b12.webp"],
+      zigzag: [
+        "/books/b9.webp",
+        "/books/b10.jpg",
+        "/books/b11.jpg",
+        "/books/b12.webp",
+      ],
     },
   },
   {
     title: "Editor's Picks",
     description: "Curated by our top editors.",
-    background: "/f6.png",
+    background: "/bg/f6.png",
     book: {
       link: "https://example.com/book4",
-      zigzag: ["/b13.webp", "/b14.webp", "/b15.jpg", "/b16.webp"],
+      zigzag: [
+        "/books/b13.webp",
+        "/books/b14.webp",
+        "/books/b15.jpg",
+        "/books/b16.webp",
+      ],
     },
   },
   {
     title: "Flash Deals",
     description: "Limited time discounts you can’t miss!",
-    background: "/f1.png",
+    background: "/bg/f1.png",
     book: {
       link: "https://example.com/book5",
-      zigzag: ["/b17.webp", "/b18.jpg", "/b19.jpg", "/b20.jpg"],
+      zigzag: [
+        "/books/b17.webp",
+        "/books/b18.jpg",
+        "/books/b19.jpg",
+        "/books/b20.jpg",
+      ],
     },
   },
 ];
@@ -68,12 +93,14 @@ const BookCarousel = () => {
   };
 
   return (
-    <div className="relative h-[550px] w-full flex justify-center items-center mt-6">
-      {/* Dynamic Background Flower */}
+    <div
+  className="relative h-[550px] w-full flex justify-center items-center mt-6"
+  style={{ perspective: 1200 }}
+>
       <img
         src={offers[index].background}
         alt="Background Flower-vector"
-        className="absolute top-2 left-6 w-56 z-10"
+        className="absolute top-0 z-10 left-1 md:left-2 lg:left-0 xl:left-10 w-36 md:w-46 lg:w-56 xl:w-66"
       />
 
       {/* Outline Frame - 5 Layers */}
@@ -148,23 +175,23 @@ const BookCarousel = () => {
         >
           {/* Left Page */}
           <div className="w-1/2 flex flex-col mb-40 justify-center items-center text-white text-center">
-            <h2 className="text-4xl font-bold mb-2">{offers[index].title}</h2>
-            <p className="text-base leading-relaxed">
+            <h2 className="text-3xl  xl:text-4xl ml-6 font-bold xl:mb-2">{offers[index].title}</h2>
+            <p className="text-base ml-2 leading-relaxed">
               {offers[index].description}
             </p>
           </div>
 
           {/* Right Page */}
-          <div className="w-1/2 flex justify-center items-center relative top-4">
+          <div className="w-full md:w-1/2 flex justify-center items-center relative mt-4 md:top-4">
             {/* Zig-zag books */}
-            <div className="absolute top-2 right-10 flex gap-2 ">
+            <div className="grid grid-cols-2 gap-2 mb-40 md:mb-40 lg:mb30  ml-2 md:ml-20 items-center md:flex md:gap-2 md:absolute">
               {offers[index].book.zigzag.map((src, idx) => (
                 <img
                   key={idx}
                   src={src}
                   alt={`Book ${idx}`}
-                  className={`w-30 h-38 object-contain rounded shadow-md transform ${
-                    idx % 2 === 1 ? "translate-y-[15px]" : ""
+                  className={`w-16 h-28 md:w-30 md:h-38 object-contain rounded shadow-md transform ${
+                    idx % 2 === 1 ? "md:translate-y-[15px]" : ""
                   }`}
                 />
               ))}
