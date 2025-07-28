@@ -86,9 +86,9 @@ export const addBook = async (req, res) => {
       createdBooks.push(book);
     }
 
-    return res.status(200).json(
-      new apiResponse(200, createdBooks, "Book(s) added successfully.")
-    );
+    return res
+      .status(200)
+      .json(new apiResponse(200, createdBooks, "Book(s) added successfully."));
   } catch (error) {
     console.error("Book Add Error:", error);
     throw new apiError(500, "Something went wrong while adding the book(s)");
@@ -97,7 +97,18 @@ export const addBook = async (req, res) => {
 
 export const allBooks = async (req, res) => {
   try {
+    const query = req.query.q?.toLowerCase();
+
     const books = await db.book.findMany({
+      where: {
+        OR: query
+          ? [
+              { title: { contains: query, mode: "insensitive" } },
+              { author: { contains: query, mode: "insensitive" } },
+              { genre: { contains: query, mode: "insensitive" } },
+            ]
+          : undefined,
+      },
       select: {
         id: true,
         title: true,
@@ -113,9 +124,11 @@ export const allBooks = async (req, res) => {
       },
     });
 
-    if (!books) {
-      throw new apiError(404, "No book found");
-    }
+   if (books.length === 0) {
+  return res
+    .status(200)
+    .json(new apiResponse(200, [], "No matching books found"));
+}
 
     return res
       .status(200)
