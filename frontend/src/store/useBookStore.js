@@ -9,20 +9,20 @@ export const useBookStore = create((set) =>( {
     error:null,             // for error state 
 
 
-//   get all books
-fetchAllBooks: async() => {
-    set({isLoading:true})
-    try {
-        const res = await axiosInstance.get("/book/all-books")
-        set({books :res.data.data})
-    } catch (error) {
-        console.error("Error fetching books");
-        set({error: "Failed to load books"})
-        toast.error("Error loading books")
-    } finally{
-        set({isLoading:false})
-    }
+fetchAllBooks: async (query = "") => {
+  set({ isLoading: true });
+  try {
+    const res = await axiosInstance.get(`/book/all-books${query ? `?q=${query}` : ""}`);
+    set({ books: res.data.data });
+  } catch (error) {
+    console.error("Error fetching books", error);
+    set({ error: "Failed to load books" });
+    toast.error("Error loading books");
+  } finally {
+    set({ isLoading: false });
+  }
 },
+
 
 addBook: async(bookData) => {
       set({isLoading:true})

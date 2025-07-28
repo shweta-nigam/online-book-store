@@ -4,14 +4,19 @@ import { useBookStore } from "../../store/useBookStore";
 import { Loader } from "@/components/ui/loader";
 import { Card, CardContent } from "@/components/ui/card";
 import BookCarousel from "@/components/BooksPage/BookCarousel";
+import { useLocation } from "react-router-dom";
 
 const BooksList = () => {
+  const { search } = useLocation();
   const navigate = useNavigate();
   const { books, fetchAllBooks, isLoading, error } = useBookStore();
 
-  useEffect(() => {
-    fetchAllBooks();
-  }, [fetchAllBooks]);
+    useEffect(() => {
+    const queryParam = new URLSearchParams(search);
+    const q = queryParam.get("q") || "";
+    fetchAllBooks(q);
+  }, [search, fetchAllBooks]);
+
 
   if (isLoading) return <Loader />;
 
