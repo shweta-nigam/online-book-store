@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 
 import OrderPage from "@/pages/Profile/ProfileOrderPage";
 import ProfilePage from "@/pages/Profile/ProfilePage";
-import ProfileSettingPage from "@/pages/Profile/ProfileSettingPage";
+import ProfileSettingPage from "@/pages/Profile/profileSettingPage";
 import ProtectedRoute from "./ProtectedRoute";
 
 const ProfileRoute = (
