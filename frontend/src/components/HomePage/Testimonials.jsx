@@ -7,42 +7,42 @@ const testimonials = [
   {
     name: "Alex P.",
     text: "Absolutely love this platform! It helped me discover amazing books and connect with fellow readers.",
-    avatar: "/users/alex.png",
+    avatar: "/users/p4.jpg",
   },
   {
     name: "Priya S.",
     text: "A fantastic way to track my reading list and share reviews. The community is great!",
-    avatar: "/users/priya.png",
+    avatar: "/users/p7.jpg",
   },
   {
     name: "James L.",
     text: "Beautiful design, easy to use, and keeps me motivated to read more books every month.",
-    avatar: "/users/james.png",
+    avatar: "/users/p6.jpg",
   },
   {
     name: "Sara M.",
     text: "It feels like a cozy book café online. I love the vibes!",
-    avatar: "/users/sara.png",
+    avatar: "/users/p5.jpg",
   },
   {
     name: "Ravi T.",
     text: "Finally a book platform that understands readers!",
-    avatar: "/users/ravi.png",
+    avatar: "/users/p4.jpg",
   },
   {
     name: "Lena W.",
     text: "I joined for the book tracking, stayed for the community. And plan on staying forever!",
-    avatar: "/users/lena.png",
+    avatar: "/users/p3.jpg",
   },
   {
     name: "Nora K.",
     text: "An intuitive way to catalog my favorite books and discover new ones.",
-    avatar: "/users/nora.png",
+    avatar: "/users/p1.jpg",
   },
   {
     name: "Eli B.",
     text: "I read more now than I ever did before. This platform is magic.",
-    avatar: "/users/eli.png",
+    avatar: "/users/p2.jpg",
   },
 ];
 

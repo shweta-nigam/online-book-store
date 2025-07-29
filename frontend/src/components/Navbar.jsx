@@ -30,7 +30,7 @@ export default function Navbar({ transparent = false }) {
       <div className="flex items-center justify-between px-6 py-4">
         {/* Logo */}
         <img
-          src="/logo.png"
+          src="/w-logo.png"
           alt="MyApp Logo"
           className="h-auto w-24 sm:w-28 md:w-36 lg:w-40 xl:w-44 max-w-[160px]"
         />
