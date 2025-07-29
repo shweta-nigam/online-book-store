@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { useAuthStore } from "@/store/useAuthStore";
 import { useNavigate, Link } from "react-router-dom";
-import { Menu, X, Search } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import SearchBar from "./SearchBar";
 
 export default function Navbar({ transparent = false }) {
@@ -17,49 +17,16 @@ export default function Navbar({ transparent = false }) {
   const logout = useAuthStore((state) => state.logout);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const handleSearch = () => {
-    const trimmed = searchQuery.trim();
-    if (trimmed) {
-      navigate(`/books?q=${encodeURIComponent(trimmed)}`);
-      setMobileMenuOpen(false);
-    }
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") handleSearch();
-  };
-
-  const renderSearchBar = (isMobile = false) => (
-    <div className={`flex items-center space-x-2 ${isMobile ? "w-full" : ""}`}>
-      <input
-        type="text"
-        placeholder="Search books..."
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        onKeyDown={handleKeyDown}
-        className={`px-4 py-2 ${isMobile ? "w-full" : "w-[250px]"} rounded-full text-white bg-black/40 border border-white/40 placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition duration-300`}
-      />
-      <Button
-        variant="outline"
-        className="text-white border-white hover:text-black hover:bg-white hover:border-black p-2"
-        onClick={handleSearch}
-        aria-label="Search"
-      >
-        <Search size={18} />
-      </Button>
-    </div>
-  );
 
   return (
-       <header
-      className={`sticky top-0 z-50 w-full text-white  transition-all duration-300 ${
+    <header
+      className={`sticky top-0 z-50 w-full text-white transition-all duration-300 ${
         transparent
           ? "bg-transparent"
           : "bg-[linear-gradient(90deg,rgba(0,0,0)_0%,rgba(5,87,150)_35%,rgba(0,0,0)_100%)]"
       }`}
     >
+      {/* Top Row: Logo + Desktop Search + Nav + Hamburger */}
       <div className="flex items-center justify-between px-6 py-4">
         {/* Logo */}
         <img
@@ -69,10 +36,11 @@ export default function Navbar({ transparent = false }) {
         />
 
         {/* Desktop Search */}
-       
-        <SearchBar placeholder="Search books..." />
+        <div className="hidden md:block">
+          <SearchBar placeholder="Search books..." />
+        </div>
 
-        {/* Desktop Nav */}
+        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6 ml-auto">
           <NavigationMenu>
             <NavigationMenuList>
@@ -119,7 +87,7 @@ export default function Navbar({ transparent = false }) {
           )}
         </div>
 
-        {/* Mobile menu toggle */}
+        {/* Mobile Menu Toggle */}
         <button
           className="md:hidden text-white"
           onClick={() => setMobileMenuOpen((prev) => !prev)}
@@ -129,11 +97,14 @@ export default function Navbar({ transparent = false }) {
         </button>
       </div>
 
-      {/* Mobile Dropdown Menu */}
+      {/* Mobile SearchBar (below logo and hamburger) */}
+      <div className="block md:hidden px-6 pb-4">
+        <SearchBar placeholder="Search books..." />
+      </div>
+
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden flex flex-col gap-4 px-6 pb-6">
-          {renderSearchBar(true)}
-
           {["Home", "About", "Contact", "Books"].map((item) => (
             <Link
               key={item}
@@ -185,3 +156,4 @@ export default function Navbar({ transparent = false }) {
     </header>
   );
 }
+
