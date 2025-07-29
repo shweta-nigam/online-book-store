@@ -32,7 +32,7 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="w-screen min-h-screen flex items-center justify-center bg-[linear-gradient(90deg,rgba(0,0,0)_0%,rgba(5,87,150)_35%,rgba(0,0,0)_100%)] px-4">
+    <div className="w-full min-h-screen flex items-center justify-center bg-[linear-gradient(90deg,rgba(0,0,0)_0%,rgba(5,87,150)_35%,rgba(0,0,0)_100%)] px-4">
       <Card className="w-full max-w-md shadow-2xl bg-gray-900 text-gray-100 rounded-xl hover:shadow-indigo-500/20 transition-shadow duration-300">
         <CardHeader className="text-center">
           <Badge className="mb-2 bg-indigo-600 text-white">ReadGala</Badge>

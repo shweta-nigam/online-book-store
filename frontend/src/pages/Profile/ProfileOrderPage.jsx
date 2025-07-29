@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
-const OrderPage = () => {
+const ProfileOrderPage = () => {
   const {
     fetchUserOrder,
     orders,
@@ -79,5 +79,5 @@ console.log("Type of orders:", typeof orders);
   );
 };
 
-export default OrderPage;
+export default ProfileOrderPage;
 

@@ -30,7 +30,7 @@ export const useAuthStore = create(
         try {
           const res = await axiosInstance.post("/auth/register", data);
           toast.success(res.data.message);
-          await get().checkAuth(); 
+          await get().checkAuth();
         } catch (error) {
           console.error("Error signing up", error);
           toast.error("Error signing up");
@@ -53,20 +53,31 @@ export const useAuthStore = create(
         }
       },
 
+      // logout: async () => {
+      //   try {
+      //     await axiosInstance.get("/auth/logout");
+      //     set({ authUser: null });
+      //     toast.success("Logout successfully");
+      //   } catch (error) {
+      //     console.error("Error logging out", error);
+      //     toast.error("Error logging out");
+      //   }
+      // },
       logout: async () => {
         try {
           await axiosInstance.get("/auth/logout");
+        } catch (err) {
+          console.error("Logout failed", err);
+        } finally {
           set({ authUser: null });
-          toast.success("Logout successfully");
-        } catch (error) {
-          console.error("Error logging out", error);
-          toast.error("Error logging out");
         }
       },
 
       forgotPassword: async (email) => {
         try {
-          const res = await axiosInstance.post("/auth/forgot-password", { email });
+          const res = await axiosInstance.post("/auth/forgot-password", {
+            email,
+          });
           toast.success(res.data.message);
         } catch (error) {
           console.error("Error in forgot password", error);
@@ -85,12 +96,9 @@ export const useAuthStore = create(
       },
     }),
     {
-      name: "auth-storage", 
+      name: "auth-storage",
       getStorage: () => localStorage,
       partialize: (state) => ({ authUser: state.authUser }),
     }
   )
 );
-
-
-

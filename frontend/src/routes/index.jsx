@@ -7,7 +7,7 @@ import Navbar from "@/components/Navbar";
 
 
 import BookRoutes from "./bookRoutes";
-import ReviewPage from "../pages/Profile/ReviewPage";
+import ReviewPage from "../pages/Book/ReviewPage";
 import OrderRoutes from "./orderRoutes";
 import AuthRoute from "./authRoutes";
 import ProfileRoute from "./ProfileRoutes";

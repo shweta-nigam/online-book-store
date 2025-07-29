@@ -65,7 +65,8 @@ export default function Navbar({ transparent = false }) {
         <img
           src="/logo.png"
           alt="MyApp Logo"
-          className="h-auto w-auto md:w-40 lg:w-24 max-w-[160px]"
+          // className="h-auto w-auto md:w-40 lg:w-24 max-w-[160px]"
+           className="h-auto w-24 sm:w-28 md:w-36 lg:w-40 xl:w-44 max-w-[160px]"
         />
 
         {/* Desktop Search */}

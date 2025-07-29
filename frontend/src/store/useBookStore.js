@@ -12,8 +12,10 @@ export const useBookStore = create((set) =>( {
 fetchAllBooks: async (query = "") => {
   set({ isLoading: true });
   try {
-    const res = await axiosInstance.get(`/book/all-books${query ? `?q=${query}` : ""}`);
+   const res = await axiosInstance.get(`/book/all-books${query ? `?q=${encodeURIComponent(query)}` : ""}`);
+    console.log("Response:", res.data);
     set({ books: res.data.data });
+    return res.data.data; 
   } catch (error) {
     console.error("Error fetching books", error);
     set({ error: "Failed to load books" });
