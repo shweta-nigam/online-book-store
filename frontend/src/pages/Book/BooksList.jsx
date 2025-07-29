@@ -32,7 +32,7 @@ const BooksList = () => {
     return (
       <div className="flex flex-col items-center justify-center py-12 w-full min-h-screen text-white bg-[linear-gradient(90deg,rgba(0,0,0)_0%,rgba(5,87,150)_35%,rgba(0,0,0)_100%)]">
         <img
-          src="/e-shelf.jpg"
+          src="/assets/e-shelf.jpg"
           alt="No books illustration"
           className="w-124 object-contain mb-4"
         />
