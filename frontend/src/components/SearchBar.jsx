@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import debounce from "lodash.debounce";
+import debounce from "lodash.debounce"; 
 
 const SearchBar = ({ placeholder = "Search books..." }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -22,11 +22,12 @@ const SearchBar = ({ placeholder = "Search books..." }) => {
       console.error("Error fetching suggestions:", err);
       setSuggestions([]);
     }
-  }, 300);
+  }, 300); 
+
 
   useEffect(() => {
     fetchSuggestions(searchTerm);
-    return () => fetchSuggestions.cancel(); // Cleanup
+    return () => fetchSuggestions.cancel(); // Cleanup on unmount
   }, [searchTerm]);
 
   const handleSearch = (e) => {
@@ -46,12 +47,12 @@ const SearchBar = ({ placeholder = "Search books..." }) => {
   };
 
   return (
-    <div className="relative w-full max-w-md mx-auto px-2 sm:px-4">
+    <div className="relative">
       <form onSubmit={handleSearch} className="flex items-center gap-2">
         <input
           type="text"
           placeholder={placeholder}
-          className="w-full sm:w-[250px] lg:w-[350px] px-4 py-2 rounded-full text-white bg-black/40 border border-white/30 placeholder-white/60 
+          className="px-4 py-2 w-[250px] rounded-full text-white bg-black/40 border border-white/30 placeholder-white/60 
             focus:outline-none focus:ring-1 focus:ring-white/50 focus:border-white/60 transition duration-300"
           value={searchTerm}
           onChange={(e) => {
@@ -62,7 +63,7 @@ const SearchBar = ({ placeholder = "Search books..." }) => {
         />
         <button
           type="submit"
-          className="px-3 sm:px-4 py-2 rounded-2xl bg-gray-900 hover:bg-gray-600 text-white text-sm sm:text-base"
+          className="bg-gray-900 hover:bg-gray-600 text-white px-4 py-2 rounded-2xl"
         >
           Search
         </button>
@@ -73,7 +74,7 @@ const SearchBar = ({ placeholder = "Search books..." }) => {
           {suggestions.map((book) => (
             <li
               key={book.id}
-              className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm sm:text-base"
+              className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
               onClick={() => handleSuggestionClick(book)}
             >
               {book.title}
@@ -86,4 +87,3 @@ const SearchBar = ({ placeholder = "Search books..." }) => {
 };
 
 export default SearchBar;
-
